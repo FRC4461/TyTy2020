@@ -11,20 +11,20 @@ import frc.robot.subsystems.Intake;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 
 /**
- * An example command that uses an example subsystem.
+ * RunIntake command that runs the intake motor.
  */
 public class RunIntake extends CommandBase {
   @SuppressWarnings({ "PMD.UnusedPrivateField", "PMD.SingularField" })
   private final Intake m_intake;
 
   /**
-   * Creates a new ExampleCommand.
+   * Creates a new RunIntake.
    *
    * @param subsystem The subsystem used by this command.
    */
   public RunIntake(Intake subsystem) {
     m_intake = subsystem;
-    // Use addRequirements() here to declare subsystem dependencies.
+
     addRequirements(m_intake);
   }
 

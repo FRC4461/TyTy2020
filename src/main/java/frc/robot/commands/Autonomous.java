@@ -15,11 +15,9 @@ import frc.robot.subsystems.Chassis;
 // https://docs.wpilib.org/en/latest/docs/software/commandbased/convenience-features.html
 public class Autonomous extends SequentialCommandGroup {
   /**
-   * Creates a new ReplaceMeSequentialCommandGroup.
+   * Creates a new Autonomous command group.
    */
   public Autonomous(Chassis chassis) {
-    // Add your commands in the super() call, e.g.
-    // super(new FooCommand(), new BarCommand());
     super(new Rotate(chassis, 90));
   }
 }

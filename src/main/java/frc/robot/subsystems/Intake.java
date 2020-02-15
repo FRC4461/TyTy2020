@@ -16,11 +16,9 @@ import com.ctre.phoenix.motorcontrol.ControlMode;
 // import com.ctre.phoenix.motorcontrol.LimitSwitchSource;
 
 /**
- * Add your docs here.
+ * Intake subsystem
  */
 public class Intake extends SubsystemBase {
-  // Put methods for controlling this subsystem
-  // here. Call these from Commands.
   private final TalonSRX intakeMotor = new TalonSRX(Constants.Shooter.INTAKE_MOTOR_ID);
 
   public void runIntake() {

@@ -14,11 +14,9 @@ import frc.robot.Constants;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 /**
- * Add your docs here.
+ * Flywheel subsystem
  */
 public class Flywheel extends SubsystemBase {
-  // Put methods for controlling this subsystem
-  // here. Call these from Commands.
   // private DutyCycleEncoder hurachesEncoder = new DutyCycleEncoder(0);
 
   private static final TalonSRX flywheelMotor = new TalonSRX(Constants.Shooter.FLYWHEEL_MOTOR_ID);

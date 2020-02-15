@@ -11,20 +11,20 @@ import frc.robot.subsystems.Chassis;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 
 /**
- * An example command that uses an example subsystem.
+ * ReadEncoder command that only gets the value of the encoder. Used just for testing.
  */
 public class ReadEncoder extends CommandBase {
   @SuppressWarnings({ "PMD.UnusedPrivateField", "PMD.SingularField" })
   private final Chassis m_Chassis;
 
   /**
-   * Creates a new ExampleCommand.
+   * Creates a new ReadEncoder.
    *
    * @param subsystem The subsystem used by this command.
    */
   public ReadEncoder(Chassis subsystem) {
     m_Chassis = subsystem;
-    // Use addRequirements() here to declare subsystem dependencies.
+
     addRequirements(m_Chassis);
   }
 

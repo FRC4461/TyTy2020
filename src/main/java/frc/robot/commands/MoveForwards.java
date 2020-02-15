@@ -11,7 +11,7 @@ import frc.robot.subsystems.Chassis;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 
 /**
- * An example command that uses an example subsystem.
+ * Move forward command that uses the chassis subsystem. Uses inches.
  */
 public class MoveForwards extends CommandBase {
   @SuppressWarnings({ "PMD.UnusedPrivateField", "PMD.SingularField" })
@@ -19,17 +19,16 @@ public class MoveForwards extends CommandBase {
   private final double m_givenDistance;
 
   /**
-   * Creates a new ExampleCommand.
+   * Creates a new MoveForwards.
    *
    * @param subsystem The subsystem used by this command.
+   * @param givenDistance The distance to travel in inches.
    */
   public MoveForwards(Chassis subsystem, double givenDistance) {
     m_Chassis = subsystem;
     m_givenDistance = givenDistance;
 
-    // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(m_Chassis);
-
   }
 
   // Called when the command is initially scheduled.

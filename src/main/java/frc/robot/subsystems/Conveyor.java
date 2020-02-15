@@ -13,11 +13,9 @@ import com.ctre.phoenix.motorcontrol.ControlMode;
 import frc.robot.Constants;
 
 /**
- * Add your docs here.
+ * Conveyor belt subsystem. Mechanism that takes the ball from the intake to the flywheel.
  */
 public class Conveyor extends SubsystemBase {
-  // Put methods for controlling this subsystem
-  // here. Call these from Commands.
   private final TalonSRX conveyorMotor = new TalonSRX(Constants.Shooter.CONVEYOR_MOTOR_ID);
 
   public void runConveyor() {

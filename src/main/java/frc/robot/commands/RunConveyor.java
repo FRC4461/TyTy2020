@@ -11,20 +11,20 @@ import frc.robot.subsystems.Conveyor;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 
 /**
- * An example command that uses an example subsystem.
+ * RunConveyor that runs the conveyor motor.
  */
 public class RunConveyor extends CommandBase {
   @SuppressWarnings({ "PMD.UnusedPrivateField", "PMD.SingularField" })
   private final Conveyor m_conveyor;
 
   /**
-   * Creates a new ExampleCommand.
+   * Creates a new RunConveyor.
    *
    * @param subsystem The subsystem used by this command.
    */
   public RunConveyor(Conveyor subsystem) {
     m_conveyor = subsystem;
-    // Use addRequirements() here to declare subsystem dependencies.
+
     addRequirements(m_conveyor);
   }
 

@@ -12,20 +12,20 @@ import frc.robot.subsystems.Chassis;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 
 /**
- * An example command that uses an example subsystem.
+ * Teleop drive command that uses the chassis subsystem. Uses joysticks.
  */
 public class Drive extends CommandBase {
   @SuppressWarnings({ "PMD.UnusedPrivateField", "PMD.SingularField" })
   private final Chassis m_Chassis;
 
   /**
-   * Creates a new ExampleCommand.
+   * Creates a new Drive command.
    *
    * @param subsystem The subsystem used by this command.
    */
   public Drive(Chassis subsystem) {
     m_Chassis = subsystem;
-    // Use addRequirements() here to declare subsystem dependencies.
+
     addRequirements(m_Chassis);
   }
 
