@@ -34,9 +34,9 @@ public final class Constants {
 
     
     public static final class Shooter{
-        public static final int talon5 = 4;
-        public static final int talon6 = 5;
-        public static final int talon7 = 6;
+        public static final int FLYWHEEL_MOTOR_ID = 4;
+        public static final int INTAKE_MOTOR_ID = 5;
+        public static final int CONVEYOR_MOTOR_ID = 6;
         
         }
     
