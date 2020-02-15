@@ -15,7 +15,6 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
  * Teleop drive command that uses the chassis subsystem. Uses joysticks.
  */
 public class Drive extends CommandBase {
-  @SuppressWarnings({ "PMD.UnusedPrivateField", "PMD.SingularField" })
   private final Chassis m_Chassis;
 
   /**

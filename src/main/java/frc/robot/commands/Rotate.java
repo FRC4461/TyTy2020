@@ -14,7 +14,6 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
  * Rotate command that rotates the robot by degrees. Uses chassis and gyro.
  */
 public class Rotate extends CommandBase {
-  @SuppressWarnings({ "PMD.UnusedPrivateField", "PMD.SingularField" })
   private final Chassis m_Chassis;
   private final double m_rotation;
 
@@ -29,7 +28,7 @@ public class Rotate extends CommandBase {
   public Rotate(Chassis subsystem, double rotation) {
     m_Chassis = subsystem;
     m_rotation = rotation;
-    
+
     addRequirements(m_Chassis);
   }
 

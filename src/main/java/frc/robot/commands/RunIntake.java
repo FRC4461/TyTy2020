@@ -14,7 +14,6 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
  * RunIntake command that runs the intake motor.
  */
 public class RunIntake extends CommandBase {
-  @SuppressWarnings({ "PMD.UnusedPrivateField", "PMD.SingularField" })
   private final Intake m_intake;
 
   /**

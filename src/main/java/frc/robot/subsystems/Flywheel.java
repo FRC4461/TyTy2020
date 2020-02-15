@@ -17,8 +17,6 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
  * Flywheel subsystem
  */
 public class Flywheel extends SubsystemBase {
-  // private DutyCycleEncoder hurachesEncoder = new DutyCycleEncoder(0);
-
   private static final TalonSRX flywheelMotor = new TalonSRX(Constants.Shooter.FLYWHEEL_MOTOR_ID);
 
   public void runFlyWheel() {

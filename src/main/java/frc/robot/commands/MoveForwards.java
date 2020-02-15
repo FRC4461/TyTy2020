@@ -14,7 +14,6 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
  * Move forward command that uses the chassis subsystem. Uses inches.
  */
 public class MoveForwards extends CommandBase {
-  @SuppressWarnings({ "PMD.UnusedPrivateField", "PMD.SingularField" })
   private final Chassis m_Chassis;
   private final double m_givenDistance;
 

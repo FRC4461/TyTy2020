@@ -14,7 +14,6 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
  * ShootFlywheel command that runs the flywheel motor.
  */
 public class ShootFlywheel extends CommandBase {
-  @SuppressWarnings({ "PMD.UnusedPrivateField", "PMD.SingularField" })
   private final Flywheel m_flywheel;
 
   /**

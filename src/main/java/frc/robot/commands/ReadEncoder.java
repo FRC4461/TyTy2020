@@ -14,7 +14,6 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
  * ReadEncoder command that only gets the value of the encoder. Used just for testing.
  */
 public class ReadEncoder extends CommandBase {
-  @SuppressWarnings({ "PMD.UnusedPrivateField", "PMD.SingularField" })
   private final Chassis m_Chassis;
 
   /**

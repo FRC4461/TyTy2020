@@ -14,7 +14,6 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
  * RunConveyor that runs the conveyor motor.
  */
 public class RunConveyor extends CommandBase {
-  @SuppressWarnings({ "PMD.UnusedPrivateField", "PMD.SingularField" })
   private final Conveyor m_conveyor;
 
   /**
