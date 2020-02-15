@@ -6,12 +6,13 @@
 /*----------------------------------------------------------------------------*/
 
 package frc.robot.subsystems;
+
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
-import com.ctre.phoenix.motorcontrol.LimitSwitchNormal;
-import com.ctre.phoenix.motorcontrol.LimitSwitchSource;
+// import com.ctre.phoenix.motorcontrol.LimitSwitchNormal;
+// import com.ctre.phoenix.motorcontrol.LimitSwitchSource;
 
 /**
  * Add your docs here.
@@ -19,7 +20,5 @@ import com.ctre.phoenix.motorcontrol.LimitSwitchSource;
 public class Intake extends SubsystemBase {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
-private final TalonSRX intakeMotor = new TalonSRX(Constants.Shooter.INTAKE_MOTOR_ID);
- 
-  }
-
+  private final TalonSRX intakeMotor = new TalonSRX(Constants.Shooter.INTAKE_MOTOR_ID);
+}

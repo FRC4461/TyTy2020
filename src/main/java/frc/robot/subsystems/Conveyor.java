@@ -9,7 +9,7 @@ package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
-import com.ctre.phoenix.motorcontrol.ControlMode;
+// import com.ctre.phoenix.motorcontrol.ControlMode;
 import frc.robot.Constants;
 
 /**
@@ -19,5 +19,5 @@ public class Conveyor extends SubsystemBase {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
   private final TalonSRX conveyorMotor = new TalonSRX(Constants.Shooter.CONVEYOR_MOTOR_ID);
-  
+
 }

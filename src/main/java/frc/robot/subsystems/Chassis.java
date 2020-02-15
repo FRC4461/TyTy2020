@@ -9,7 +9,6 @@ package frc.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 
-
 import java.util.concurrent.TimeUnit;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
@@ -20,8 +19,6 @@ import edu.wpi.first.wpilibj.ADXRS450_Gyro;
 import edu.wpi.first.wpilibj.DutyCycleEncoder;
 import edu.wpi.first.wpilibj.interfaces.Gyro;
 
-
-
 public class Chassis extends SubsystemBase {
     private DutyCycleEncoder rightEncoder = new DutyCycleEncoder(0);
 
@@ -31,12 +28,11 @@ public class Chassis extends SubsystemBase {
     private final TalonSRX talon4 = new TalonSRX(Constants.DriveBase.talon4);
 
     private Gyro gyro = new ADXRS450_Gyro();
-    
+
     private double angleTolerance = 3;
-    private double speedReduction = 1/5; 
+    private double speedReduction = 1 / 5;
     private double reductionIncrement = 5;
     private double reductions = 4;
-
 
     private double rightEncoderOrigin = 0;
 
@@ -44,12 +40,9 @@ public class Chassis extends SubsystemBase {
         rightEncoder.setDistancePerRotation(Constants.DISTANCE_PER_REVOLUTION);
     }
 
-
-
     public void zeroEncoder() {
-    
-        
-         rightEncoderOrigin = rightEncoder.getDistance();
+
+        rightEncoderOrigin = rightEncoder.getDistance();
     }
 
     public void encoderDriveForward(double distance) {
@@ -70,18 +63,14 @@ public class Chassis extends SubsystemBase {
         System.out.println(rightEncoder.getDistance());
     }
 
-
-    public void drive(double leftSpeed, double rightSpeed){
+    public void drive(double leftSpeed, double rightSpeed) {
         talon1.set(ControlMode.PercentOutput, -leftSpeed);
         talon2.set(ControlMode.PercentOutput, -leftSpeed);
         talon3.set(ControlMode.PercentOutput, rightSpeed);
         talon4.set(ControlMode.PercentOutput, rightSpeed);
     }
-    
-    
 
-    public void initializeGyro(){
-        
+    public void initializeGyro() {
         gyro.calibrate();
 
         try {
@@ -89,40 +78,38 @@ public class Chassis extends SubsystemBase {
         } catch (Exception e) {
 
         }
-        
         gyro.reset();
     }
 
-    public void zeroGyro(){
-
+    public void zeroGyro() {
         gyro.reset();
-
     }
 
     // function for turning
-    
-
-
-    public boolean turn(double rotationSpeed, double rotationDegrees){
+    public boolean turn(double rotationSpeed, double rotationDegrees) {
         boolean isDone = false;
         double currentDegrees = gyro.getAngle();
         System.out.println(gyro.getAngle());
-        if (Math.abs(currentDegrees) < rotationDegrees * (1 - angleTolerance)){
+        if (Math.abs(currentDegrees) < rotationDegrees * (1 - angleTolerance)) {
             talon1.set(ControlMode.PercentOutput, -rotationSpeed);
             talon2.set(ControlMode.PercentOutput, -rotationSpeed);
             talon3.set(ControlMode.PercentOutput, -rotationSpeed);
             talon4.set(ControlMode.PercentOutput, -rotationSpeed);
 
             for (int i = 0; i < reductions; i++) {
-                if (Math.abs(currentDegrees) > speedReduction * rotationDegrees + (1 - speedReduction) / reductionIncrement * rotationDegrees * i) {
-                    talon1.set(ControlMode.PercentOutput, -rotationSpeed * speedReduction * (reductionIncrement-i)/reductionIncrement);
-                    talon2.set(ControlMode.PercentOutput, -rotationSpeed * speedReduction * (reductionIncrement-i)/reductionIncrement);
-                    talon3.set(ControlMode.PercentOutput, -rotationSpeed * speedReduction * (reductionIncrement-i)/reductionIncrement);
-                    talon4.set(ControlMode.PercentOutput, -rotationSpeed * speedReduction * (reductionIncrement-i)/reductionIncrement);
+                if (Math.abs(currentDegrees) > speedReduction * rotationDegrees
+                        + (1 - speedReduction) / reductionIncrement * rotationDegrees * i) {
+                    talon1.set(ControlMode.PercentOutput,
+                            -rotationSpeed * speedReduction * (reductionIncrement - i) / reductionIncrement);
+                    talon2.set(ControlMode.PercentOutput,
+                            -rotationSpeed * speedReduction * (reductionIncrement - i) / reductionIncrement);
+                    talon3.set(ControlMode.PercentOutput,
+                            -rotationSpeed * speedReduction * (reductionIncrement - i) / reductionIncrement);
+                    talon4.set(ControlMode.PercentOutput,
+                            -rotationSpeed * speedReduction * (reductionIncrement - i) / reductionIncrement);
                 }
             }
-        }
-        else {
+        } else {
 
             talon1.set(ControlMode.PercentOutput, 0);
             talon2.set(ControlMode.PercentOutput, 0);
@@ -130,7 +117,7 @@ public class Chassis extends SubsystemBase {
             talon4.set(ControlMode.PercentOutput, 0);
 
             isDone = true;
-            return isDone;           
+            return isDone;
         }
         return isDone;
     }
