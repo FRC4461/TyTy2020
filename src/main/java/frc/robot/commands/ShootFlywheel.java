@@ -11,14 +11,13 @@ import frc.robot.subsystems.Flywheel;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 
 /**
- * An example command that uses an example subsystem.
+ * ShootFlywheel command that runs the flywheel motor.
  */
 public class ShootFlywheel extends CommandBase {
-  @SuppressWarnings({ "PMD.UnusedPrivateField", "PMD.SingularField" })
   private final Flywheel m_flywheel;
 
   /**
-   * Creates a new ExampleCommand.
+   * Creates a new ShootFlywheel.
    *
    * @param subsystem The subsystem used by this command.
    */

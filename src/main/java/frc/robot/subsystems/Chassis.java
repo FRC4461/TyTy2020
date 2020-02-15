@@ -19,6 +19,9 @@ import edu.wpi.first.wpilibj.ADXRS450_Gyro;
 import edu.wpi.first.wpilibj.DutyCycleEncoder;
 import edu.wpi.first.wpilibj.interfaces.Gyro;
 
+/**
+ * Drivebase subsytem
+ */
 public class Chassis extends SubsystemBase {
     private DutyCycleEncoder rightEncoder = new DutyCycleEncoder(0);
 

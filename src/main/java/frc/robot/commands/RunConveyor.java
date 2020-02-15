@@ -7,25 +7,24 @@
 
 package frc.robot.commands;
 
-import frc.robot.RobotContainer;
-import frc.robot.subsystems.Chassis;
+import frc.robot.subsystems.Conveyor;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 
 /**
- * Teleop drive command that uses the chassis subsystem. Uses joysticks.
+ * RunConveyor that runs the conveyor motor.
  */
-public class Drive extends CommandBase {
-  private final Chassis m_Chassis;
+public class RunConveyor extends CommandBase {
+  private final Conveyor m_conveyor;
 
   /**
-   * Creates a new Drive command.
+   * Creates a new RunConveyor.
    *
    * @param subsystem The subsystem used by this command.
    */
-  public Drive(Chassis subsystem) {
-    m_Chassis = subsystem;
+  public RunConveyor(Conveyor subsystem) {
+    m_conveyor = subsystem;
 
-    addRequirements(m_Chassis);
+    addRequirements(m_conveyor);
   }
 
   // Called when the command is initially scheduled.
@@ -36,11 +35,12 @@ public class Drive extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    m_Chassis.drive(RobotContainer.leftJoystick.getY(), RobotContainer.rightJoystick.getY());
+    m_conveyor.runConveyor();
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
+    m_conveyor.stopConveyor();
   }
 }

@@ -11,10 +11,9 @@ import frc.robot.subsystems.Chassis;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 
 /**
- * An example command that uses an example subsystem.
+ * Autonomous Encoder Drive command that uses the chassis subsystem. Based on inches.
  */
 public class EncoderDrive extends CommandBase {
-  @SuppressWarnings({ "PMD.UnusedPrivateField", "PMD.SingularField" })
   private final Chassis m_Chassis;
   private final double m_distance;
 
@@ -27,7 +26,7 @@ public class EncoderDrive extends CommandBase {
   public EncoderDrive(Chassis subsystem, double distance) {
     m_Chassis = subsystem;
     m_distance = distance;
-    // Use addRequirements() here to declare subsystem dependencies.
+
     addRequirements(m_Chassis);
   }
 

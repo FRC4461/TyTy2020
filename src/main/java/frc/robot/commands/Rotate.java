@@ -11,25 +11,24 @@ import frc.robot.subsystems.Chassis;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 
 /**
- * An example command that uses an example subsystem.
+ * Rotate command that rotates the robot by degrees. Uses chassis and gyro.
  */
 public class Rotate extends CommandBase {
-  @SuppressWarnings({ "PMD.UnusedPrivateField", "PMD.SingularField" })
   private final Chassis m_Chassis;
   private final double m_rotation;
 
   boolean isDone = false;
 
   /**
-   * Creates a new EncoderDrive.
+   * Creates a new Rotate.
    *
    * @param subsystem The subsystem used by this command.
-   * @param rotation  Distance in inches to drive.
+   * @param rotation  Rotation angle in degrees.
    */
   public Rotate(Chassis subsystem, double rotation) {
     m_Chassis = subsystem;
     m_rotation = rotation;
-    // Use addRequirements() here to declare subsystem dependencies.
+
     addRequirements(m_Chassis);
   }
 
