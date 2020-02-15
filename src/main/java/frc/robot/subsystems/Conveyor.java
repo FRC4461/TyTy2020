@@ -25,7 +25,6 @@ public class Conveyor extends SubsystemBase {
   }
 
   public void stopConveyor() {
-    System.out.println("STOP THE FREAKING FLYWHEEL");
     conveyorMotor.set(ControlMode.PercentOutput, 0);
   }
 }

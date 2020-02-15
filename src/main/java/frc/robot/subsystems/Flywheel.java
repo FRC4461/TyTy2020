@@ -28,7 +28,6 @@ public class Flywheel extends SubsystemBase {
   }
 
   public void stopFlyWheel() {
-    System.out.println("STOP THE FREAKING FLYWHEEL");
     flywheelMotor.set(ControlMode.PercentOutput, 0);
   }
 }
