@@ -9,7 +9,7 @@ package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
-// import com.ctre.phoenix.motorcontrol.ControlMode;
+import com.ctre.phoenix.motorcontrol.ControlMode;
 import frc.robot.Constants;
 
 /**
@@ -20,4 +20,12 @@ public class Conveyor extends SubsystemBase {
   // here. Call these from Commands.
   private final TalonSRX conveyorMotor = new TalonSRX(Constants.Shooter.CONVEYOR_MOTOR_ID);
 
+  public void runConveyor() {
+    conveyorMotor.set(ControlMode.PercentOutput, 0.5);
+  }
+
+  public void stopConveyor() {
+    System.out.println("STOP THE FREAKING FLYWHEEL");
+    conveyorMotor.set(ControlMode.PercentOutput, 0);
+  }
 }
