@@ -14,14 +14,15 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
  * An example command that uses an example subsystem.
  */
 public class EncoderDrive extends CommandBase {
-  @SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
+  @SuppressWarnings({ "PMD.UnusedPrivateField", "PMD.SingularField" })
   private final Chassis m_Chassis;
   private final double m_distance;
+
   /**
    * Creates a new EncoderDrive.
    *
    * @param subsystem The subsystem used by this command.
-   * @param distance Distance in inches to drive.
+   * @param distance  Distance in inches to drive.
    */
   public EncoderDrive(Chassis subsystem, double distance) {
     m_Chassis = subsystem;
@@ -33,15 +34,14 @@ public class EncoderDrive extends CommandBase {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-      m_Chassis.zeroEncoder();
+    m_Chassis.zeroEncoder();
   }
-
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-      m_Chassis.encoderDriveForward(m_distance);
-    }
+    m_Chassis.encoderDriveForward(m_distance);
+  }
 
   // Called once the command ends or is interrupted.
   @Override

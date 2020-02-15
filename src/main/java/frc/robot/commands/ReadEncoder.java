@@ -14,9 +14,8 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
  * An example command that uses an example subsystem.
  */
 public class ReadEncoder extends CommandBase {
-  @SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
+  @SuppressWarnings({ "PMD.UnusedPrivateField", "PMD.SingularField" })
   private final Chassis m_Chassis;
-
 
   /**
    * Creates a new ExampleCommand.
@@ -34,12 +33,11 @@ public class ReadEncoder extends CommandBase {
   public void initialize() {
   }
 
-
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-      m_Chassis.readEncoder();
-    }
+    m_Chassis.readEncoder();
+  }
 
   // Called once the command ends or is interrupted.
   @Override

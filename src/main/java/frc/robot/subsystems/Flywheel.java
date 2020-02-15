@@ -6,10 +6,10 @@
 /*----------------------------------------------------------------------------*/
 
 package frc.robot.subsystems;
+
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import frc.robot.Constants;
-import edu.wpi.first.wpilibj.DutyCycleEncoder;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
@@ -19,17 +19,16 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 public class Flywheel extends SubsystemBase {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
-  //private DutyCycleEncoder hurachesEncoder = new DutyCycleEncoder(0);
+  // private DutyCycleEncoder hurachesEncoder = new DutyCycleEncoder(0);
 
-  private static final TalonSRX talon5 = new TalonSRX(Constants.Shooter.talon5);
-  private double frontEncoderOrigin = 1;
+  private static final TalonSRX flywheelMotor = new TalonSRX(Constants.Shooter.FLYWHEEL_MOTOR_ID);
 
-  public void ShootFlyWheel () {
-    talon5.set(ControlMode.PercentOutput, 0.7); 
-  } 
+  public void runFlyWheel() {
+    flywheelMotor.set(ControlMode.PercentOutput, 0.7);
+  }
 
-  public void stopFlyWheel(){
+  public void stopFlyWheel() {
     System.out.println("STOP THE FREAKING FLYWHEEL");
-    talon5.set(ControlMode.PercentOutput,0);
+    flywheelMotor.set(ControlMode.PercentOutput, 0);
   }
 }
