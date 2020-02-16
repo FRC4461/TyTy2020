@@ -7,17 +7,17 @@
 
 package frc.robot.commands;
 
-import frc.robot.subsystems.Chassis;
 import edu.wpi.first.wpilibj2.command.CommandBase;
+import frc.robot.subsystems.Chassis;
 
 /**
  * Rotate command that rotates the robot by degrees. Uses chassis and gyro.
  */
 public class Rotate extends CommandBase {
-  private final Chassis m_Chassis;
+  private final Chassis m_chassis;
   private final double m_rotation;
 
-  boolean isDone = false;
+  boolean m_isDone = false;
 
   /**
    * Creates a new Rotate.
@@ -26,27 +26,27 @@ public class Rotate extends CommandBase {
    * @param rotation  Rotation angle in degrees.
    */
   public Rotate(Chassis subsystem, double rotation) {
-    m_Chassis = subsystem;
+    m_chassis = subsystem;
     m_rotation = rotation;
 
-    addRequirements(m_Chassis);
+    addRequirements(m_chassis);
   }
 
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    m_Chassis.zeroGyro();
+    m_chassis.zeroGyro();
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    isDone = m_Chassis.turn(.35, m_rotation);
+    m_isDone = m_chassis.turn(.35, m_rotation);
   }
 
   @Override
   public boolean isFinished() {
-    return isDone;
+    return m_isDone;
   }
 
   // Called once the command ends or is interrupted.
