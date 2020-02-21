@@ -7,14 +7,14 @@
 
 package frc.robot.commands;
 
-import frc.robot.subsystems.Chassis;
 import edu.wpi.first.wpilibj2.command.CommandBase;
+import frc.robot.subsystems.Chassis;
 
 /**
  * ReadEncoder command that only gets the value of the encoder. Used just for testing.
  */
 public class ReadEncoder extends CommandBase {
-  private final Chassis m_Chassis;
+  private final Chassis m_chassis;
 
   /**
    * Creates a new ReadEncoder.
@@ -22,9 +22,9 @@ public class ReadEncoder extends CommandBase {
    * @param subsystem The subsystem used by this command.
    */
   public ReadEncoder(Chassis subsystem) {
-    m_Chassis = subsystem;
+    m_chassis = subsystem;
 
-    addRequirements(m_Chassis);
+    addRequirements(m_chassis);
   }
 
   // Called when the command is initially scheduled.
@@ -35,7 +35,7 @@ public class ReadEncoder extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    m_Chassis.readEncoder();
+    m_chassis.readEncoder();
   }
 
   // Called once the command ends or is interrupted.

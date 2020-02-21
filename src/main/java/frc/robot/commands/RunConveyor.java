@@ -7,8 +7,8 @@
 
 package frc.robot.commands;
 
-import frc.robot.subsystems.Conveyor;
 import edu.wpi.first.wpilibj2.command.CommandBase;
+import frc.robot.subsystems.Conveyor;
 
 /**
  * RunConveyor that runs the conveyor motor.

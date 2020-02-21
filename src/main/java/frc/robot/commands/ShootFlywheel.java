@@ -7,8 +7,8 @@
 
 package frc.robot.commands;
 
-import frc.robot.subsystems.Flywheel;
 import edu.wpi.first.wpilibj2.command.CommandBase;
+import frc.robot.subsystems.Flywheel;
 
 /**
  * ShootFlywheel command that runs the flywheel motor.
