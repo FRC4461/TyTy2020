@@ -30,12 +30,9 @@ import frc.robot.subsystems.Intake;
  * commands, and button mappings) should be declared here.
  */
 public class RobotContainer {
-  private double normalFlywheelSpeed = 0.85;
-  private double turboFlywheelSpeed = 1;
   // The robot's subsystems and commands are defined here...
   private final Chassis m_chassis = new Chassis();
-  private final Flywheel m_normalFlywheel = new Flywheel(normalFlywheelSpeed);
-  private final Flywheel m_turboFlywheel = new Flywheel(turboFlywheelSpeed);
+  private final Flywheel m_flywheel = new Flywheel();
   private final Conveyor m_conveyor = new Conveyor();
   private final Intake m_intake = new Intake();
   // private final Drive m_driveCommand = new Drive(m_chassis);
@@ -43,10 +40,9 @@ public class RobotContainer {
 
   public static final Joystick leftJoystick = new Joystick(Constants.leftJoystick);
   public static final Joystick rightJoystick = new Joystick(Constants.rightJoystick);
-  public static final Button normalButton = new JoystickButton(leftJoystick, 2);
+  public static final Button button2 = new JoystickButton(leftJoystick, 2);
   public static final Button conveyorButton = new JoystickButton(rightJoystick, 2);
   public static final Button intakeButton = new JoystickButton(rightJoystick, 1);
-  public static final Button turboButton = new JoystickButton(rightJoystick, 3);
 
   /**
    * The container for the robot. Contains subsystems, OI devices, and commands.
@@ -65,8 +61,7 @@ public class RobotContainer {
    * passing it to a {@link edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
   private void configureButtonBindings() {
-    normalButton.whileHeld(new ShootFlywheel(m_normalFlywheel));
-    turboButton.whileHeld(new ShootFlywheel(m_turboFlywheel));
+    button2.whileHeld(new ShootFlywheel(m_flywheel));
     conveyorButton.whileHeld(new RunConveyor(m_conveyor));
     intakeButton.whileHeld(new RunIntake(m_intake));
   }
