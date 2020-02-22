@@ -19,7 +19,10 @@ public class Flywheel extends SubsystemBase {
   private static final TalonSRX m_flywheelMotor = new TalonSRX(Constants.Shooter.FLYWHEEL_MOTOR_ID);
   private double m_flywheelSpeed = 0;
 
-  public Flywheel(double flywheelSpeed){
+  /**
+   * constructor for Flywheel.
+   */
+  public Flywheel(double flywheelSpeed) {
 
     m_flywheelSpeed = flywheelSpeed;
 
