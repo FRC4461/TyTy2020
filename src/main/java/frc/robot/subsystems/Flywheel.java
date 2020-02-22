@@ -20,12 +20,10 @@ public class Flywheel extends SubsystemBase {
   private double m_flywheelSpeed = 0;
 
   /**
-   * constructor for Flywheel.
+   * Constructor for Flywheel.
    */
   public Flywheel(double flywheelSpeed) {
-
     m_flywheelSpeed = flywheelSpeed;
-
   }
 
   public void runFlyWheel() {
