@@ -17,9 +17,17 @@ import frc.robot.Constants;
  */
 public class Flywheel extends SubsystemBase {
   private static final TalonSRX m_flywheelMotor = new TalonSRX(Constants.Shooter.FLYWHEEL_MOTOR_ID);
+  private double m_flywheelSpeed = 0;
+
+  /**
+   * Constructor for Flywheel.
+   */
+  public Flywheel(double flywheelSpeed) {
+    m_flywheelSpeed = flywheelSpeed;
+  }
 
   public void runFlyWheel() {
-    m_flywheelMotor.set(ControlMode.PercentOutput, 0.7);
+    m_flywheelMotor.set(ControlMode.PercentOutput, m_flywheelSpeed);
   }
 
   public void stopFlyWheel() {
