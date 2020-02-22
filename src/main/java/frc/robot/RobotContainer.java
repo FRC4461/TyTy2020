@@ -30,7 +30,7 @@ import frc.robot.subsystems.Intake;
  */
 public class RobotContainer {
   // The robot's subsystems and commands are defined here...
-  private final double m_normalFlywheelSpeed = 0.85;
+  private final double m_normalFlywheelSpeed = -0.5;
   private final double m_turboFlywheelSpeed = 1;
   private final Chassis m_chassis = new Chassis();
   private final Flywheel m_normalFlywheel = new Flywheel(m_normalFlywheelSpeed);
