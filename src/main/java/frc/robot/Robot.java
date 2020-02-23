@@ -7,9 +7,13 @@
 
 package frc.robot;
 
+import edu.wpi.first.networktables.NetworkTable;
+import edu.wpi.first.networktables.NetworkTableEntry;
+import edu.wpi.first.networktables.NetworkTableInstance;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
+import frc.robot.commands.NetworkTables;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -22,6 +26,12 @@ public class Robot extends TimedRobot {
   private Command m_autonomousCommand;
 
   private RobotContainer m_robotContainer;
+  private NetworkTable m_networkTables;
+  private NetworkTableInstance m_networkTableInstance;
+  private NetworkTableEntry m_xEntry;
+  private NetworkTableEntry m_yEntry;
+  private double m_y = 0;
+  private double m_x = 0;
 
   /**
    * This function is run when the robot is first started up and should be used
@@ -30,6 +40,9 @@ public class Robot extends TimedRobot {
   @Override
   public void robotInit() {
     m_robotContainer = new RobotContainer();
+    m_NetworkTables = new NetworkTables();
+    m_xEntry = table.getEntry("X");
+    m_yEntry = table.getEntry("Y");
   }
 
   /**
@@ -93,6 +106,11 @@ public class Robot extends TimedRobot {
     if (m_autonomousCommand != null) {
       m_autonomousCommand.cancel();
     }
+    //**This makes it so we can change any values in teleop. */
+    m_xEntry.setDouble(m_x);
+    m_yEntry.setDouble(m_y);
+    m_x += 0.05;
+    m_y += 1;
   }
 
   /**
