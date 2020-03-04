@@ -25,4 +25,9 @@ public final class Constants {
     public static final int INTAKE_MOTOR_ID = 5;
     public static final int CONVEYOR_MOTOR_ID = 6;
   }
+
+  public static final class ConveyorSpeedConstants {
+    public static final double intakeConveyor = -0.5;
+    public static final double alignConveyor = 0.3;
+  }
 }

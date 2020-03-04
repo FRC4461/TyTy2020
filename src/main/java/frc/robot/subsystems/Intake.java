@@ -21,7 +21,7 @@ public class Intake extends SubsystemBase {
   private final TalonSRX m_intakeMotor = new TalonSRX(Constants.Shooter.INTAKE_MOTOR_ID);
 
   public void runIntake() {
-    m_intakeMotor.set(ControlMode.PercentOutput, 0.5);
+    m_intakeMotor.set(ControlMode.PercentOutput, -0.5);
   }
 
   public void stopIntake() {
