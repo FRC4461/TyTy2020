@@ -10,7 +10,6 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Constants;
 import frc.robot.subsystems.Conveyor;
-import frc.robot.subsystems.Intake;
 
 public class AlignConveyor extends CommandBase {
   /**
@@ -18,8 +17,8 @@ public class AlignConveyor extends CommandBase {
    */
   private final Conveyor m_conveyor;
 
-  private long t;
-  private long end;
+  private static long t;
+  private static long end;
 
   public AlignConveyor(Conveyor subsystem) {
     m_conveyor = subsystem;
