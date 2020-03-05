@@ -30,4 +30,9 @@ public final class Constants {
     public static final double intakeConveyor = -0.5;
     public static final double alignConveyor = 0.3;
   }
+
+  public static final class FlywheelSpeedConstants {
+    public static final double m_normalFlywheelSpeed = 0.5;
+    public static final double m_turboFlywheelSpeed = 1;
+  }
 }

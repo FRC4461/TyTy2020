@@ -21,8 +21,9 @@ public class AlignConveyor extends CommandBase {
   private long t;
   private long end;
 
-  public AlignConveyor(Conveyor subsystem) {
+  public AlignConveyor(Conveyor subsystem, long timeMillis) {
     m_conveyor = subsystem;
+    end = timeMillis;
     addRequirements(m_conveyor);
   }
 
@@ -31,7 +32,7 @@ public class AlignConveyor extends CommandBase {
   public void initialize() {
     // Do a timer
     t = System.currentTimeMillis();
-    end = t + 300;
+    end += t;
   }
 
   // Called every time the scheduler runs while the command is scheduled.

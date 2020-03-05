@@ -32,13 +32,13 @@ import frc.robot.subsystems.Intake;
  */
 public class RobotContainer {
   // The robot's subsystems and commands are defined here...
-  private final double m_normalFlywheelSpeed = 0.5;
-  private final double m_turboFlywheelSpeed = 1;
   private static final Chassis m_chassis = new Chassis();
-  private final Flywheel m_normalFlywheel = new Flywheel(m_normalFlywheelSpeed);
-  private final Flywheel m_turboFlywheel = new Flywheel(m_turboFlywheelSpeed);
-  private final Conveyor m_conveyor = new Conveyor();
-  private final Intake m_intake = new Intake();
+  private static final Flywheel m_normalFlywheel =
+      new Flywheel(Constants.FlywheelSpeedConstants.m_normalFlywheelSpeed);
+  private static final Flywheel m_turboFlywheel =
+      new Flywheel(Constants.FlywheelSpeedConstants.m_turboFlywheelSpeed);
+  private static final Conveyor m_conveyor = new Conveyor();
+  private static final Intake m_intake = new Intake();
   // private final Drive m_driveCommand = new Drive(m_chassis);
   private final ReadEncoder m_encoderReadCommand = new ReadEncoder(m_chassis);
   public static final Joystick leftJoystick = new Joystick(Constants.leftJoystick);
@@ -72,7 +72,7 @@ public class RobotContainer {
     turboButton.whileHeld(new ShootFlywheel(m_turboFlywheel));
     conveyorButton.whileHeld(new RunConveyor(m_conveyor));
     intakeButton.whileHeld(new RunIntake(m_intake));
-    rightJoystickThree.whenPressed(new AlignConveyor(m_conveyor));
+    rightJoystickThree.whenPressed(new AlignConveyor(m_conveyor, 300));
   }
 
   /**
