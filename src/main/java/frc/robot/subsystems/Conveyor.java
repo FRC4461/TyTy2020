@@ -18,8 +18,8 @@ import frc.robot.Constants;
 public class Conveyor extends SubsystemBase {
   private final TalonSRX m_conveyorMotor = new TalonSRX(Constants.Shooter.CONVEYOR_MOTOR_ID);
 
-  public void runConveyor() {
-    m_conveyorMotor.set(ControlMode.PercentOutput, 0.5);
+  public void runConveyor(double conveyorSpeed) {
+    m_conveyorMotor.set(ControlMode.PercentOutput, conveyorSpeed);
   }
 
   public void stopConveyor() {

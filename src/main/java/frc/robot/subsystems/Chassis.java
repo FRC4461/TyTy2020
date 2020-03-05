@@ -22,10 +22,10 @@ import java.util.concurrent.TimeUnit;
 public class Chassis extends SubsystemBase {
   private DutyCycleEncoder m_rightEncoder = new DutyCycleEncoder(0);
 
-  private final TalonSRX m_talon1 = new TalonSRX(Constants.DriveBase.talon1);
-  private final TalonSRX m_talon2 = new TalonSRX(Constants.DriveBase.talon2);
-  private final TalonSRX m_talon3 = new TalonSRX(Constants.DriveBase.talon3);
-  private final TalonSRX m_talon4 = new TalonSRX(Constants.DriveBase.talon4);
+  private final TalonSRX m_backLeft = new TalonSRX(Constants.DriveBase.backLeft);
+  private final TalonSRX m_backRight = new TalonSRX(Constants.DriveBase.backRight);
+  private final TalonSRX m_frontLeft = new TalonSRX(Constants.DriveBase.frontLeft);
+  private final TalonSRX m_frontRight = new TalonSRX(Constants.DriveBase.frontRight);
 
   private Gyro m_gyro = new ADXRS450_Gyro();
 
@@ -35,6 +35,14 @@ public class Chassis extends SubsystemBase {
   private double m_reductions = 4;
 
   private double m_rightEncoderOrigin = 0;
+
+  /** Drives at the specified speed for the right and left sides. */
+  public void drive(double leftSpeed, double rightSpeed) {
+    m_backLeft.set(ControlMode.PercentOutput, -leftSpeed);
+    m_frontLeft.set(ControlMode.PercentOutput, -leftSpeed);
+    m_backRight.set(ControlMode.PercentOutput, rightSpeed);
+    m_frontRight.set(ControlMode.PercentOutput, rightSpeed);
+  }
 
   public void initEncoder() {
     m_rightEncoder.setDistancePerRotation(Constants.DISTANCE_PER_REVOLUTION);
@@ -48,29 +56,21 @@ public class Chassis extends SubsystemBase {
   /** Drives the robot forward until it hits the specified distance. */
   public void encoderDriveForward(double distance) {
     if (m_rightEncoder.getDistance() - m_rightEncoderOrigin < distance) {
-      m_talon1.set(ControlMode.PercentOutput, -0.4);
-      m_talon2.set(ControlMode.PercentOutput, -0.4);
-      m_talon3.set(ControlMode.PercentOutput, 0.4);
-      m_talon4.set(ControlMode.PercentOutput, 0.4);
+      m_backLeft.set(ControlMode.PercentOutput, -0.4);
+      m_backRight.set(ControlMode.PercentOutput, -0.4);
+      m_frontLeft.set(ControlMode.PercentOutput, 0.4);
+      m_frontRight.set(ControlMode.PercentOutput, 0.4);
     } else {
-      m_talon1.set(ControlMode.PercentOutput, 0);
-      m_talon2.set(ControlMode.PercentOutput, 0);
-      m_talon3.set(ControlMode.PercentOutput, 0);
-      m_talon4.set(ControlMode.PercentOutput, 0);
+      m_frontLeft.set(ControlMode.PercentOutput, 0);
+      m_backRight.set(ControlMode.PercentOutput, 0);
+      m_frontLeft.set(ControlMode.PercentOutput, 0);
+      m_frontRight.set(ControlMode.PercentOutput, 0);
     }
   }
 
   /** Prints encoder to System.out. */
   public void readEncoder() {
     System.out.println(m_rightEncoder.getDistance());
-  }
-
-  /** Drives at the specified speed for the right and left sides. */
-  public void drive(double leftSpeed, double rightSpeed) {
-    m_talon1.set(ControlMode.PercentOutput, -leftSpeed);
-    m_talon2.set(ControlMode.PercentOutput, -leftSpeed);
-    m_talon3.set(ControlMode.PercentOutput, rightSpeed);
-    m_talon4.set(ControlMode.PercentOutput, rightSpeed);
   }
 
   /** Resets the gyro to 0 and calibrates it. */
@@ -96,30 +96,30 @@ public class Chassis extends SubsystemBase {
     double currentDegrees = m_gyro.getAngle();
     System.out.println(m_gyro.getAngle());
     if (Math.abs(currentDegrees) < rotationDegrees * (1 - m_angleTolerance)) {
-      m_talon1.set(ControlMode.PercentOutput, -rotationSpeed);
-      m_talon2.set(ControlMode.PercentOutput, -rotationSpeed);
-      m_talon3.set(ControlMode.PercentOutput, -rotationSpeed);
-      m_talon4.set(ControlMode.PercentOutput, -rotationSpeed);
+      m_backLeft.set(ControlMode.PercentOutput, -rotationSpeed);
+      m_backRight.set(ControlMode.PercentOutput, -rotationSpeed);
+      m_frontLeft.set(ControlMode.PercentOutput, -rotationSpeed);
+      m_frontRight.set(ControlMode.PercentOutput, -rotationSpeed);
 
       for (int i = 0; i < m_reductions; i++) {
         if (Math.abs(currentDegrees) > m_speedReduction * rotationDegrees
             + (1 - m_speedReduction) / m_reductionIncrement * rotationDegrees * i) {
-          m_talon1.set(ControlMode.PercentOutput, -rotationSpeed * m_speedReduction
+          m_backLeft.set(ControlMode.PercentOutput, -rotationSpeed * m_speedReduction
               * (m_reductionIncrement - i) / m_reductionIncrement);
-          m_talon2.set(ControlMode.PercentOutput, -rotationSpeed * m_speedReduction
+          m_backRight.set(ControlMode.PercentOutput, -rotationSpeed * m_speedReduction
               * (m_reductionIncrement - i) / m_reductionIncrement);
-          m_talon3.set(ControlMode.PercentOutput, -rotationSpeed * m_speedReduction
+          m_frontLeft.set(ControlMode.PercentOutput, -rotationSpeed * m_speedReduction
               * (m_reductionIncrement - i) / m_reductionIncrement);
-          m_talon4.set(ControlMode.PercentOutput, -rotationSpeed * m_speedReduction
+          m_frontRight.set(ControlMode.PercentOutput, -rotationSpeed * m_speedReduction
               * (m_reductionIncrement - i) / m_reductionIncrement);
         }
       }
     } else {
 
-      m_talon1.set(ControlMode.PercentOutput, 0);
-      m_talon2.set(ControlMode.PercentOutput, 0);
-      m_talon3.set(ControlMode.PercentOutput, 0);
-      m_talon4.set(ControlMode.PercentOutput, 0);
+      m_backLeft.set(ControlMode.PercentOutput, 0);
+      m_backRight.set(ControlMode.PercentOutput, 0);
+      m_frontLeft.set(ControlMode.PercentOutput, 0);
+      m_frontRight.set(ControlMode.PercentOutput, 0);
 
       isDone = true;
       return isDone;

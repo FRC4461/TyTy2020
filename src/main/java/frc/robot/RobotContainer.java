@@ -13,6 +13,8 @@ import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.Button;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
+import frc.robot.commands.AlignConveyor;
+import frc.robot.commands.Drive;
 import frc.robot.commands.ReadEncoder;
 import frc.robot.commands.RunConveyor;
 import frc.robot.commands.RunIntake;
@@ -30,9 +32,9 @@ import frc.robot.subsystems.Intake;
  */
 public class RobotContainer {
   // The robot's subsystems and commands are defined here...
-  private final double m_normalFlywheelSpeed = -0.5;
-  private final double m_turboFlywheelSpeed = -1;
-  private final Chassis m_chassis = new Chassis();
+  private final double m_normalFlywheelSpeed = 0.5;
+  private final double m_turboFlywheelSpeed = 1;
+  private static final Chassis m_chassis = new Chassis();
   private final Flywheel m_normalFlywheel = new Flywheel(m_normalFlywheelSpeed);
   private final Flywheel m_turboFlywheel = new Flywheel(m_turboFlywheelSpeed);
   private final Conveyor m_conveyor = new Conveyor();
@@ -45,6 +47,9 @@ public class RobotContainer {
   public static final Button turboButton = new JoystickButton(leftJoystick, 3);
   public static final Button conveyorButton = new JoystickButton(rightJoystick, 2);
   public static final Button intakeButton = new JoystickButton(rightJoystick, 1);
+  public static final Button rightJoystickThree = new JoystickButton(rightJoystick, 3);
+
+  public static final Drive m_driveCommand = new Drive(m_chassis);
 
   /**
    * The container for the robot. Contains subsystems, OI devices, and commands.
@@ -52,8 +57,8 @@ public class RobotContainer {
   public RobotContainer() {
     // Configure the button bindings
     configureButtonBindings();
-    // m_chassis.setDefaultCommand(m_driveCommand);
-    m_chassis.setDefaultCommand(m_encoderReadCommand);
+    m_chassis.setDefaultCommand(m_driveCommand);
+    // m_chassis.setDefaultCommand(m_encoderReadCommand);
   }
 
   /**
@@ -67,6 +72,7 @@ public class RobotContainer {
     turboButton.whileHeld(new ShootFlywheel(m_turboFlywheel));
     conveyorButton.whileHeld(new RunConveyor(m_conveyor));
     intakeButton.whileHeld(new RunIntake(m_intake));
+    rightJoystickThree.whenPressed(new AlignConveyor(m_conveyor));
   }
 
   /**
